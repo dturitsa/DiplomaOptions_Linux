@@ -110,8 +110,11 @@ namespace DiplomaWebSite
    var context = serviceScope.ServiceProvider.GetService<OptionsContext>();
    SeedData.Initialize(context);
    
+   /*
+   //trying to seed users
     var usercondext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
    SeedUsers.Initialize(usercondext);
+   */
         }
             
         }

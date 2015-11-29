@@ -1,3 +1,6 @@
+
+/*
+//trying to use this file to seed users but it's not working
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,3 +50,4 @@ namespace DiplomaWebSite.Models
         }
     }
 
+*/
