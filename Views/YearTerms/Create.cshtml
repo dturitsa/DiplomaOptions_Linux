@@ -1,0 +1,29 @@
+﻿@model DiplomaWebSite.Models.YearTerm
+
+<div>
+    <form asp-controller="Speaker" asp-action="Create" method="post">
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="year"></label>
+            <input asp-for="year" class="form-control" />
+            <span asp-validation-for="year" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="term"></label>
+            <input asp-for="term" class="form-control" />
+            <span asp-validation-for="term" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="isDefault"></label>
+            <input asp-for="isDefault" class="form-control" />
+            <span asp-validation-for="isDefault" class="text-danger"></span>
+        </div>
+        <input type="submit" class="btn btn-default" value="Create" />
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+

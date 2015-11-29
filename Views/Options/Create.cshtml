@@ -1,0 +1,24 @@
+﻿@model DiplomaWebSite.Models.Option
+
+<div>
+    <form asp-controller="Speaker" asp-action="Create" method="post">
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+          <div class="form-group">
+            <label asp-for="title"></label>
+            <input asp-for="title" class="form-control" />
+            <span asp-validation-for="title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="isActive"></label>
+            <input asp-for="isActive" class="form-control" />
+            <span asp-validation-for="isActive" class="text-danger"></span>
+        </div>
+        <input type="submit" class="btn btn-default" value="Create" />
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+

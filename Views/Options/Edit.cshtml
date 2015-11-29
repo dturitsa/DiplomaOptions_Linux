@@ -1,0 +1,25 @@
+﻿@model DiplomaWebSite.Models.Option
+<div>
+    <form asp-controller="Option" asp-action="Update" method="post" asp-route-id="@Model.OptionId">
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <select asp-for="OptionId" asp-items="@ViewBag.Items"></select>
+        </div>
+        <div class="form-group">
+            <label asp-for="title"></label>
+            <input asp-for="title" class="form-control" />
+            <span asp-validation-for="title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="isActive"></label>
+            <input asp-for="isActive" class="form-control" />
+            <span asp-validation-for="isActive" class="text-danger"></span>
+        </div>
+        <input type="submit" class="btn btn-default" value="Save" />
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
