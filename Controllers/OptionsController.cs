@@ -2,18 +2,18 @@
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNet.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DiplomaWebSite.Models;
 using DiplomaWebSite.Services;
-//using testyo2.ViewModels.Manage;
 using DiplomaWebSite;
 
 namespace DiplomaWebSite.Controllers
 {
-        //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class OptionsController : Controller
     {
         private OptionsContext _context { get; set; }

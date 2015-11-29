@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using DiplomaWebSite.Models;
+using DiplomaWebSite.Migrations.Seed;
 using DiplomaWebSite.Services;
 
 namespace DiplomaWebSite
@@ -58,10 +59,11 @@ namespace DiplomaWebSite
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddTransient<WebUsers>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public async void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, WebUsers webuser)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -110,11 +112,13 @@ namespace DiplomaWebSite
    var context = serviceScope.ServiceProvider.GetService<OptionsContext>();
    SeedData.Initialize(context);
    
-   /*
+   var test = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+   await webuser.InitializeDataAsync();
+   
    //trying to seed users
-    var usercondext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
-   SeedUsers.Initialize(usercondext);
-   */
+   // var usercontext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+   // SeedUsers.Initialize(usercontext);
+   
         }
             
         }
