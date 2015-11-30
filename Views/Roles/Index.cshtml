@@ -5,9 +5,9 @@
 }
 
 <h2>Index</h2>
-            @Html.ActionLink("Add Role", "Create", "Roles") | 
-            @Html.ActionLink("Add User to Role", "AddUser", "Roles") | 
-            @Html.ActionLink("Delete User from Role", "DeleteUser", "Roles") 
+<a asp-controller="Roles" asp-action="Create">Add Role</a> |
+<a asp-controller="Roles" asp-action="AddUser">Add User to Role</a> |
+<a asp-controller="Roles" asp-action="DeleteUser">Delete User From Role</a>
 <table class="table">
     <tr>
         <th>
@@ -23,7 +23,7 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <a asp-controller="Roles" asp-action="Delete">Delete</a>
         </td>
     </tr>
 }

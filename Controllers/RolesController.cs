@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using DiplomaWebSite.Models;
 using DiplomaWebSite.Services;
 using DiplomaWebSite;
+using Microsoft.AspNet.Authorization;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DiplomaWebSite.Controllers
 {
@@ -24,9 +27,26 @@ namespace DiplomaWebSite.Controllers
         public RolesController(ApplicationDbContext applicationDbContext){
             _applicationDbContext = applicationDbContext;
         }
-        
-        public IActionResult Index(){
-            return View(_applicationDbContext.Roles.ToList());
+
+        public async Task<IActionResult> Index(){
+            return View(await _applicationDbContext.Roles.ToListAsync());
+        }
+
+        public IActionResult Create(){
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(IdentityRole role)
+        {
+            if (ModelState.IsValid)
+            {
+                _applicationDbContext.Roles.Add(role);
+                await _applicationDbContext.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(role);
         }
     }
 }
