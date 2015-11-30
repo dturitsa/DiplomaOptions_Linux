@@ -104,23 +104,23 @@ namespace DiplomaWebSite
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-            
+
    using (var serviceScope = app.ApplicationServices
    .GetRequiredService<IServiceScopeFactory>()
    .CreateScope()) {
-   
+
    var context = serviceScope.ServiceProvider.GetService<OptionsContext>();
    SeedData.Initialize(context);
-   
+
    var test = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
    await webuser.InitializeDataAsync();
-   
+
    //trying to seed users
    // var usercontext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
    // SeedUsers.Initialize(usercontext);
-   
+
         }
-            
+
         }
 
         // Entry point for the application.
