@@ -247,16 +247,32 @@ namespace DiplomaWebSite.Controllers
                                    Name = yt.year + " / " + yt.term
                                }).FirstOrDefault();
                          
-           // ViewBag.currentTerm = currentTerm.Name;
+          
            ViewBag.currentTerm = "Selected Term: " + currentTerm.Name;
              ViewBag.items = new string[]{ "datacom", "web and mobile", "tech pro", "Client Server"};
               var choices = _context
                     .Choices
                     .Where(c => c.YearTermId == yeartermid);
-       
-
-     
-
+             
+             
+             var firstChoice = new int[4];       
+             firstChoice[0] = (from row in _context.Choices
+                                      where row.FirstChoiceOptionId == 1
+                                         && row.YearTermId == yeartermid
+                                      select row).Count();
+              firstChoice[1] = (from row in _context.Choices
+                                      where row.FirstChoiceOptionId == 2
+                                         && row.YearTermId == yeartermid
+                                      select row).Count();
+             firstChoice[2] = (from row in _context.Choices
+                                      where row.FirstChoiceOptionId == 3
+                                         && row.YearTermId == yeartermid
+                                      select row).Count();
+             firstChoice[3] = (from row in _context.Choices
+                                      where row.FirstChoiceOptionId == 4
+                                         && row.YearTermId == yeartermid
+                                      select row).Count();                        
+            ViewBag.firstChoice = firstChoice;
         return PartialView("_ChartPartial", choices);   
         }
         
