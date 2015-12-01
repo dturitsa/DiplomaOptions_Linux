@@ -12,6 +12,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using DiplomaWebSite.Models;
 
+
 namespace DiplomaWebSite.Controllers
 {
     
@@ -30,6 +31,19 @@ namespace DiplomaWebSite.Controllers
         public IActionResult Index()
         {
             return View(_context.Choices.ToList());
+        }
+        
+        public IActionResult ReportChart() {
+            // DotNet.Highcharts.Highcharts chart = new DotNet.Highcharts.Highcharts("chart")
+            // .SetXAxis(new XAxis
+            // {
+            //     Categories = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }
+            //  })
+            // .SetSeries(new Series
+            //  {
+            //         Data = new Data(new object[] { 29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4 })
+            //  });return View(chart);
+            return View();
         }
 
                 // GET: Choices/Create

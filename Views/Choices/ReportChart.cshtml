@@ -1,0 +1,43 @@
+@model DotNet.Highcharts.Highcharts
+@{
+    // ViewBag.Title = "ReportChart Page";
+}
+
+@section_scripts {
+    <script src="@Url.Content("~/wwwroot/js/highcharts/highcharts.js")"></script>
+    <script src="@Url.Content("~/wwwroot/js/jquery-1.11.3.min.js")"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+
+
+$(function () { 
+    $('#container').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Fruit Consumption'
+        },
+        xAxis: {
+            categories: ['Apples', 'Bananas', 'Oranges']
+        },
+        yAxis: {
+            title: {
+                text: 'Fruit eaten'
+            }
+        },
+        series: [{
+            name: 'Jane',
+            data: [1, 0, 4]
+        }, {
+            name: 'John',
+            data: [5, 7, 3]
+        }]
+    });
+});
+
+
+}
+
+
+@(Model)
