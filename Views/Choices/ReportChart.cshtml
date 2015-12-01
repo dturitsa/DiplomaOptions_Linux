@@ -1,0 +1,83 @@
+@{
+    <!-- array of option names
+    ViewBag.optionName1;
+    ViewBag.optionName2;
+    ViewBag.optionName3;
+    ViewBag.optionName4;
+    ViewBag.categories 
+    num of choices per option 
+    ViewBag.secondOptionCount;
+    ViewBag.thirdOptionCount;
+    ViewBag.fourthOptionCount; -->
+}
+@section scripts {
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<script type="text/javascript">
+
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            renderTo: 'container',
+            type: 'column'
+        },
+        title: {
+            text: 'Student Option Selections',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Developed in Linux!',
+            x: -20
+        },
+        xAxis: {
+            title: {
+                text: 'Options'
+            },
+            categories: ['@ViewBag.a', '@ViewBag.b', '@ViewBag.c', '@ViewBag.d']
+        },
+        yAxis: {
+            title: {
+                text: 'Number of Students'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: 'Students'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'First Choice',
+            data: [1,2,3,4]
+        }, {
+            name: 'Second Choice',
+            data: [1,4,3,2]
+        }, {
+            name: 'Third Choice',
+            data: [2,3,1,4]
+        }, {
+            name: 'Fourth Choice',
+            data: [4,3,2,1]
+        }]
+    });
+});
+</script>
+
+}
+
+<h1> Shit. </h1>
+
+<div id="container"> </div>
+
+@{ ViewBag.e; }

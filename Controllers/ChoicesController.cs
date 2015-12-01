@@ -40,6 +40,35 @@ namespace DiplomaWebSite.Controllers
             
             return View(_context.Choices.ToList());
         }
+        
+        
+        public IActionResult ReportChart() {
+            
+             var yeartermid = _context.YearTerms.Where(y => y.isDefault == true).Select(yt => yt.YearTermId).FirstOrDefault(); 
+              
+        //     var currentTerm = (from yt in _context.YearTerms
+        //                        where yt.YearTermId == yeartermid
+        //                        select new
+        //                        {
+        //                            Name = yt.year + " / " + yt.term
+        //                        }).FirstOrDefault();
+        //    // ViewBag.currentTerm = currentTerm.Name;
+        //    ViewBag.currentTerm = "Selected Term: " + currentTerm.Name;
+               var choices = _context
+                    .Choices
+                    .Where(c => c.YearTermId == yeartermid);
+            
+            ViewBag.a = "a";
+            ViewBag.b = "b";
+            ViewBag.c = "c";
+            ViewBag.d = "d";
+            ViewBag.e = yeartermid;
+            ViewBag.f = choices;
+            
+            return View();
+        }
+        
+        
 
                 // GET: Choices/Create
         [Authorize(Roles = "Student")]
@@ -207,7 +236,7 @@ namespace DiplomaWebSite.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult GetChoices(int? yeartermid)
         {
-   if(yeartermid == null)
+            if(yeartermid == null)
             {
                 yeartermid = _context.YearTerms.Where(y => y.isDefault == true).Select(yt => yt.YearTermId).FirstOrDefault();   
             }
