@@ -35,13 +35,14 @@
                     {
                          <li><a asp-controller="Choices" asp-action="Create">Select Options</a></li>
                     }
-                        
+
                          @if (this.User.IsInRole("Admin"))
                     {
                         <li><a asp-controller="Choices" asp-action="Index">Choices</a></li>
                         <li><a asp-controller="Options" asp-action="Index">Options</a></li>
                         <li><a asp-controller="YearTerms" asp-action="Index">YearTerms</a></li>
                         <li><a asp-controller="Roles" asp-action="Index">Roles</a></li>
+                        <li><a asp-controller="ApplicationUsers" asp-action="Index">Users</a></li>
                     }
                     </ul>
                     @await Html.PartialAsync("_LoginPartial")
