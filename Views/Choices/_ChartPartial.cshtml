@@ -1,0 +1,76 @@
+﻿﻿@model IEnumerable<DiplomaWebSite.Models.Choice>
+ @section scripts{
+    <script src="@Url.Content("~/wwwroot/js/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+
+       
+}
+   <script>
+       function f(){
+          return ["@ViewBag.items[0]", "@ViewBag.items[1]", "@ViewBag.items[2]"]
+       }
+       </script>
+
+<div id="dvChart">
+    
+    
+</div>
+
+<script>
+
+    $('#dvChart').highcharts({
+        chart: {
+            renderTo: 'container',
+            type: 'column'
+        },
+        title: {
+            text: 'Student Option Selections',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Developed in Linux!',
+            x: -20
+        },
+        xAxis: {
+            title: {
+                text: 'Options'
+            },
+            categories: ["@ViewBag.items[0]", "@ViewBag.items[1]", "@ViewBag.items[2]", "@ViewBag.items[3]"]
+        },
+        yAxis: {
+            title: {
+                text: 'Number of Students'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: 'Students'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'First Choice',
+            data: [1,2,3,4]
+        }, {
+            name: 'Second Choice',
+            data: [1,4,3,2]
+        }, {
+            name: 'Third Choice',
+            data: [2,3,1,4]
+        }, {
+            name: 'Fourth Choice',
+            data: [4,3,2,1]
+        }]
+    });
+    </script>
+
+ 
