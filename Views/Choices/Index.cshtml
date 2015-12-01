@@ -10,14 +10,11 @@
     </script>
 }
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Choices";
 }
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 
 <p>Select another term: @Html.DropDownList("yearTerms", null, "select term...", htmlAttributes: new {id= "yearTermSelected", @class = "form -control", @onchange = "javascript:OnChange(this.value);" } )</p>
   

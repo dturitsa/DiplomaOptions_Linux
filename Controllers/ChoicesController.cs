@@ -219,7 +219,7 @@ namespace DiplomaWebSite.Controllers
                                    Name = yt.year + " / " + yt.term
                                }).FirstOrDefault();
            // ViewBag.currentTerm = currentTerm.Name;
-           ViewBag.currentTerm = currentTerm.Name;
+           ViewBag.currentTerm = "Selected Term: " + currentTerm.Name;
 
               var choices = _context
                     .Choices
