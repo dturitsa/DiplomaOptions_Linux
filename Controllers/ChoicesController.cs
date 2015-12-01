@@ -1,4 +1,4 @@
-﻿﻿using Microsoft.AspNet.Authorization;
+﻿﻿﻿﻿using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
@@ -29,6 +29,15 @@ namespace DiplomaWebSite.Controllers
 
         public IActionResult Index()
         {
+            var yearTerms = from yt in _context.YearTerms
+                            select new
+                            {
+                                Id = yt.YearTermId,
+                                Name = yt.year + " / " + yt.term
+                            };
+
+            ViewBag.yearTerms = new SelectList(yearTerms, "Id", "Name");
+            
             return View(_context.Choices.ToList());
         }
 
@@ -200,8 +209,7 @@ namespace DiplomaWebSite.Controllers
         {
    if(yeartermid == null)
             {
-               // yeartermid = _context.YearTerms.Where(y => y.isDefault == true).Select(yt => yt.YearTermId).FirstOrDefault();
-               yeartermid = 1;
+                yeartermid = _context.YearTerms.Where(y => y.isDefault == true).Select(yt => yt.YearTermId).FirstOrDefault();   
             }
               
             var currentTerm = (from yt in _context.YearTerms
@@ -211,7 +219,7 @@ namespace DiplomaWebSite.Controllers
                                    Name = yt.year + " / " + yt.term
                                }).FirstOrDefault();
            // ViewBag.currentTerm = currentTerm.Name;
-           ViewBag.currentTerm = "asdf";
+           ViewBag.currentTerm = currentTerm.Name;
 
               var choices = _context
                     .Choices

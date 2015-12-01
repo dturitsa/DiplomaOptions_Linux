@@ -1,5 +1,14 @@
-﻿﻿@model IEnumerable<DiplomaWebSite.Models.Choice>
-
+﻿﻿﻿﻿@model IEnumerable<DiplomaWebSite.Models.Choice>
+@section scripts{
+    <script src="@Url.Content("~/wwwroot/js/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+    
+    
+    function OnChange(termId) {
+        $("#dvChoiceResults").load('@(Url.Action("GetChoices","Choices",null, null))?yeartermid=' + termId);
+    }
+    </script>
+}
 @{
     ViewBag.Title = "Index";
 }
@@ -10,8 +19,8 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-
+<p>Select another term: @Html.DropDownList("yearTerms", null, "select term...", htmlAttributes: new {id= "yearTermSelected", @class = "form -control", @onchange = "javascript:OnChange(this.value);" } )</p>
   
   <div id="dvChoiceResults">
         @{ await Html.RenderPartialAsync("_IndexPartial");}
-    </div>
+  </div>
