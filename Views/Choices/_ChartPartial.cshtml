@@ -1,16 +1,52 @@
 ﻿﻿@model IEnumerable<DiplomaWebSite.Models.Choice>
  @section scripts{
-    <script src="@Url.Content("~/wwwroot/js/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+     
+<script src="@Url.Content("~/wwwroot/js/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="http://code.highcharts.com/highcharts.js"></script>
+
+<script> 
+       function g(){
+          return ["@ViewBag.activeOptions[0]", "@ViewBag.activeOptions[1]", "@ViewBag.activeOptions[2]",
+            "@ViewBag.activeOptions[3]", "@ViewBag.activeOptions[4]"];
+       }
+</script>
+ <script>      
+       function firstChoices(){
+          return ["@ViewBag.firstChoiceByCourse[0]", "@ViewBag.firstChoiceByCourse[1]", 
+            "@ViewBag.firstChoiceByCourse[2]","@ViewBag.firstChoiceByCourse[3]", 
+            "@ViewBag.firstChoiceByCourse[4]"];
+       }
+</script>
+ <script>      
+       function firstChoices(){
+          return ["@ViewBag.secondChoiceByCourse[0]", "@ViewBag.secondChoiceByCourse[1]", 
+            "@ViewBag.secondChoiceByCourse[2]","@ViewBag.secondChoiceByCourse[3]", 
+            "@ViewBag.secondChoiceByCourse[4]"];
+       }
+</script>
+ <script>      
+       function firstChoices(){
+          return ["@ViewBag.thirdChoiceByCourse[0]", "@ViewBag.thirdChoiceByCourse[1]", 
+            "@ViewBag.thirdChoiceByCourse[2]","@ViewBag.thirdChoiceByCourse[3]", 
+            "@ViewBag.thirdChoiceByCourse[4]"];
+       }
+</script>
+ <script>      
+       function firstChoices(){
+          return ["@ViewBag.fourthChoiceByCourse[0]", "@ViewBag.fourthChoiceByCourse[1]", 
+            "@ViewBag.fourthChoiceByCourse[2]","@ViewBag.fourthChoiceByCourse[3]", 
+            "@ViewBag.fourthChoiceByCourse[4]"];
+       }
+</script>
+<script>
+       function f(){
+          return ["@ViewBag.items[0]", "@ViewBag.items[1]", "@ViewBag.items[2]"];
+       }
+ </script>
 
        
 }
-   <script>
-       function f(){
-          return ["@ViewBag.items[0]", "@ViewBag.items[1]", "@ViewBag.items[2]"]
-       }
-       </script>
 
 <div id="dvChart">
     
@@ -36,7 +72,8 @@
             title: {
                 text: 'Options'
             },
-            categories: ["@ViewBag.items[0]", "@ViewBag.items[1]", "@ViewBag.items[2]", "@ViewBag.items[3]"]
+            categories: ["@ViewBag.activeOptions[0]", "@ViewBag.activeOptions[1]", "@ViewBag.activeOptions[2]", 
+                "@ViewBag.activeOptions[3]", "@ViewBag.activeOptions[4]"]
         },
         yAxis: {
             title: {
@@ -59,18 +96,20 @@
         },
         series: [{
             name: 'First Choice',
-            data: [1,2,3,4]
+            data: [@ViewBag.firstChoiceByCourse[0], @ViewBag.firstChoiceByCourse[1], @ViewBag.firstChoiceByCourse[2], 
+                @ViewBag.firstChoiceByCourse[3], @ViewBag.firstChoiceByCourse[4]]
         }, {
             name: 'Second Choice',
-            data: [1,4,3,2]
+            data: [@ViewBag.secondChoiceByCourse[0], @ViewBag.secondChoiceByCourse[1], @ViewBag.secondChoiceByCourse[2], 
+                @ViewBag.secondChoiceByCourse[3], @ViewBag.secondChoiceByCourse[4]]
         }, {
             name: 'Third Choice',
-            data: [2,3,1,4]
+            data: [@ViewBag.thirdChoiceByCourse[0], @ViewBag.thirdChoiceByCourse[1], @ViewBag.thirdChoiceByCourse[2], 
+                @ViewBag.thirdChoiceByCourse[3], @ViewBag.thirdChoiceByCourse[4]]
         }, {
             name: 'Fourth Choice',
-            data: [4,3,2,1]
+            data: [@ViewBag.fourthChoiceByCourse[0], @ViewBag.fourthChoiceByCourse[1], @ViewBag.fourthChoiceByCourse[2], 
+                @ViewBag.fourthChoiceByCourse[3], @ViewBag.fourthChoiceByCourse[4]]
         }]
     });
     </script>
-
- 

@@ -253,9 +253,78 @@ namespace DiplomaWebSite.Controllers
               var choices = _context
                     .Choices
                     .Where(c => c.YearTermId == yeartermid);
-       
-
-     
+                    
+            //chart calculations        
+            int numOfOptions = _context.Options
+                .Where(o => o.isActive == true)
+                .Count();
+                
+            int numOfStudents = _context.Choices
+                .Where(cc => cc.YearTermId == yeartermid)
+                .Count();
+               
+            int[] activeOptionIds = _context.Options
+                .Where(op => op.isActive == true)
+                .Select(ot => ot.OptionId)
+                .ToArray();
+                
+            string[] optionsList = _context.Options
+                .Where(o => o.isActive == true)
+                .OrderBy(or => or.OptionId)
+                .Select(ot => ot.title)
+                .ToArray();
+            
+            //gets # of students who have selected each options as 
+            //first, second, third & fourth choices by course.
+            int[] firstOptionsCount = new int[numOfOptions];
+            object[] secondOptionsCount = new object[numOfOptions];
+            object[] thirdOptionsCount = new object[numOfOptions];
+            object[] fourthOptionsCount = new object[numOfOptions];
+            
+            for (int i = 0; i < activeOptionIds.Length; i++) {
+                var tempId = activeOptionIds[i];
+                var temp = _context.Choices
+                    .Where(c => c.FirstChoiceOptionId == tempId 
+                        && c.YearTermId == yeartermid)
+                    .Count();
+                firstOptionsCount[i] = temp;
+            }
+            
+            for (int i = 0; i < activeOptionIds.Length; i++) {
+                var tempId = activeOptionIds[i];
+                var temp = _context.Choices
+                    .Where(c => c.SecondChoiceOptionId == tempId 
+                        && c.YearTermId == yeartermid)
+                    .Count();
+                secondOptionsCount[i] = temp;
+            }
+            
+            for (int i = 0; i < activeOptionIds.Length; i++) {
+                var tempId = activeOptionIds[i];
+                var temp = _context.Choices
+                    .Where(c => c.ThirdChoiceOptionId == tempId 
+                        && c.YearTermId == yeartermid)
+                    .Count();
+                thirdOptionsCount[i] = temp;
+            }
+            
+            for (int i = 0; i < activeOptionIds.Length; i++) {
+                var tempId = activeOptionIds[i];
+                var temp = _context.Choices
+                    .Where(c => c.FourthChoiceOptionId == tempId 
+                        && c.YearTermId == yeartermid)
+                    .Count();
+                fourthOptionsCount[i] = temp;
+            }
+            
+        //number of active options            
+        ViewBag.numOpt = numOfOptions; 
+        //viewbag arrays
+        ViewBag.activeOptions = optionsList; 
+        ViewBag.firstChoiceByCourse = firstOptionsCount;
+        ViewBag.secondChoiceByCourse = secondOptionsCount;
+        ViewBag.thirdChoiceByCourse = thirdOptionsCount;
+        ViewBag.fourthChoiceByCourse = fourthOptionsCount;
 
         return PartialView("_ChartPartial", choices);   
         }
