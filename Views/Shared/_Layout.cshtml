@@ -31,11 +31,18 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                        @if (this.User.IsInRole("Student"))
+                    {
+                         <li><a asp-controller="Choices" asp-action="Create">Select Options</a></li>
+                    }
+                        
+                         @if (this.User.IsInRole("Admin"))
+                    {
+                        <li><a asp-controller="Choices" asp-action="Index">Choices</a></li>
                         <li><a asp-controller="Options" asp-action="Index">Options</a></li>
                         <li><a asp-controller="YearTerms" asp-action="Index">YearTerms</a></li>
                         <li><a asp-controller="Roles" asp-action="Index">Roles</a></li>
+                    }
                     </ul>
                     @await Html.PartialAsync("_LoginPartial")
                 </div>

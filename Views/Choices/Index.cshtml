@@ -1,0 +1,17 @@
+﻿﻿@model IEnumerable<DiplomaWebSite.Models.Choice>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+  
+  <div id="dvChoiceResults">
+        @{ await Html.RenderPartialAsync("_IndexPartial");}
+    </div>

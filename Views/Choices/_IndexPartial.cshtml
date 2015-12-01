@@ -1,0 +1,170 @@
+﻿@model IEnumerable<DiplomaWebSite.Models.Choice>
+    
+<h2>Option Choices: @ViewBag.currentTerm</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentLastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstChoiceOptionId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondChoiceOptionId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThirdChoiceOptionId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FourthChoiceOptionId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentLastname)
+            </td>
+            
+            <td>
+                @switch (item.FirstChoiceOptionId)
+                {
+                    case 1:
+                        <text>Data Comm</text>
+                        break;
+                    case 2:
+                        <text>Client Server</text>
+                        break;
+                    case 3:
+                        <text>Digital Processing</text>
+                        break;
+                    case 4:
+                        <text>Information Systems</text>
+                        break;
+                    case 5:
+                        <text>Database</text>
+                        break;
+                    case 6:
+                        <text>Web & Mobile</text>
+                        break;
+                    case 7:
+                        <text>Tech Pro</text>
+                        break;
+                    default:
+                        break;
+                }
+                <!--@Html.DisplayFor(modelItem => item.FirstChoiceOptionId)-->
+            </td>
+            <td>
+                @switch (item.SecondChoiceOptionId)
+                {
+                    case 1:
+                        <text>Data Comm</text>
+                        break;
+                    case 2:
+                        <text>Client Server</text>
+                        break;
+                    case 3:
+                        <text>Digital Processing</text>
+                        break;
+                    case 4:
+                        <text>Information Systems</text>
+                        break;
+                    case 5:
+                        <text>Database</text>
+                        break;
+                    case 6:
+                        <text>Web & Mobile</text>
+                        break;
+                    case 7:
+                        <text>Tech Pro</text>
+                        break;
+                    default:
+                        break;
+                }
+            </td>
+            <td>
+                @switch (item.ThirdChoiceOptionId)
+                {
+                    case 1:
+                        <text>Data Comm</text>
+                        break;
+                    case 2:
+                        <text>Client Server</text>
+                        break;
+                    case 3:
+                        <text>Digital Processing</text>
+                        break;
+                    case 4:
+                        <text>Information Systems</text>
+                        break;
+                    case 5:
+                        <text>Database</text>
+                        break;
+                    case 6:
+                        <text>Web & Mobile</text>
+                        break;
+                    case 7:
+                        <text>Tech Pro</text>
+                        break;
+                    default:
+                        break;
+                }
+            </td>
+            <td>
+                @switch (item.FourthChoiceOptionId)
+                {
+                    case 1:
+                        <text>Data Comm</text>
+                        break;
+                    case 2:
+                        <text>Client Server</text>
+                        break;
+                    case 3:
+                        <text>Digital Processing</text>
+                        break;
+                    case 4:
+                        <text>Information Systems</text>
+                        break;
+                    case 5:
+                        <text>Database</text>
+                        break;
+                    case 6:
+                        <text>Web & Mobile</text>
+                        break;
+                    case 7:
+                        <text>Tech Pro</text>
+                        break;
+                    default:
+                        break;
+                }
+            </td>
+            
+            
+            
+            
+            
+      
+            <td>
+               <a asp-action="Edit" asp-route-id="@item.ChoiceId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.ChoiceId">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
