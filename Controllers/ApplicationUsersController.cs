@@ -96,32 +96,6 @@ namespace DiplomaWebSite.Controllers
             return View(applicationUser);
         }
 
-        // GET: ApplicationUsers/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return HttpNotFound();
-            }
-            ApplicationUser applicationUser = db.Users.Where( c => c.Id == id).FirstOrDefault();
-            if (applicationUser == null)
-            {
-                return HttpNotFound();
-            }
-            return View(applicationUser);
-        }
-
-        // POST: ApplicationUsers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            ApplicationUser applicationUser = db.Users.Where( c => c.Id == id).FirstOrDefault();
-            db.Users.Remove(applicationUser);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

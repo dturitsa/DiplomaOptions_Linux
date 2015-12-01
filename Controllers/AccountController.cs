@@ -114,6 +114,7 @@ namespace DiplomaWebSite.Controllers
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, "Student");
+                    await _userManager.SetLockoutEnabledAsync(user, false);
 
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713

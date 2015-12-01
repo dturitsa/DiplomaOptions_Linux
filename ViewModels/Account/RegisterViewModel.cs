@@ -8,13 +8,13 @@ namespace DiplomaWebSite.ViewModels.Account
 {
     public class RegisterViewModel
     {
-        
+
         [Required]
         [MaxLength(9)]
-        [RegularExpression(@"^A00\d{6}$", ErrorMessage = "Proper format is: A00######")]
+        [RegularExpression(@"^[A|a]00\d{6}$", ErrorMessage = "Proper format is: A00######")]
         [Display(Name = "Student Number")]
         public string UserName { get; set; }
-            
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
