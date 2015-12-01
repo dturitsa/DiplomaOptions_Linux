@@ -23,7 +23,7 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            <a asp-controller="Roles" asp-action="Delete">Delete</a>
+            <a asp-controller="Roles" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
         </td>
     </tr>
 }

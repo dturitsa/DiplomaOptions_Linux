@@ -21,12 +21,7 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+    <form asp-controller="Roles" asp-action="Delete" method="post" class="form-horizontal" role="form">
+        <input type="submit" class="btn btn-default" value="Save" />
+    </form>
 </div>
