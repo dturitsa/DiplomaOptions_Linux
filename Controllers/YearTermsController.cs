@@ -43,6 +43,14 @@ namespace DiplomaWebSite.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (yearTerm.isDefault)
+                {
+                    var query = from year in _context.YearTerms where year.isDefault == true select year;
+                    foreach (YearTerm year in query)
+                    {
+                        year.isDefault = false;
+                    }
+                }
                 _context.YearTerms.Add(yearTerm);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -77,7 +85,7 @@ namespace DiplomaWebSite.Controllers
                     Selected = s.YearTermId == selected
                 });
         }
-    */    
+    */
 
         public async Task<ActionResult> Edit(int id)
         {
@@ -98,6 +106,14 @@ namespace DiplomaWebSite.Controllers
         {
             try
             {
+                if (yearTerm.isDefault)
+                {
+                    var query = from year in _context.YearTerms where year.isDefault == true && year.YearTermId != yearTerm.YearTermId select year;
+                    foreach (YearTerm year in query)
+                    {
+                        year.isDefault = false;
+                    }
+                }
                 yearTerm.YearTermId = id;
                 _context.YearTerms.Attach(yearTerm);
                 _context.Entry(yearTerm).State = EntityState.Modified;
