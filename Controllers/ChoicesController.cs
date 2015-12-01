@@ -30,6 +30,7 @@ namespace DiplomaWebSite.Controllers
         public IActionResult Index()
         {
             var yearTerms = from yt in _context.YearTerms
+                            orderby !(yt.isDefault)
                             select new
                             {
                                 Id = yt.YearTermId,

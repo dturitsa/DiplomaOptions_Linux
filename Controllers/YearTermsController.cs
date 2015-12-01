@@ -41,8 +41,15 @@ namespace DiplomaWebSite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(YearTerm yearTerm)
         {
+            int check =  yearTerm.term;
+            
+            if (check!=10 && check!=20 && check!= 30) {
+                 ModelState.AddModelError(string.Empty, "Unable to save dick.");
+            }
+            
             if (ModelState.IsValid)
             {
+                
                 if (yearTerm.isDefault)
                 {
                     var query = from year in _context.YearTerms where year.isDefault == true select year;

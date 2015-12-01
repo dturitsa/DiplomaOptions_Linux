@@ -70,7 +70,7 @@ namespace DiplomaWebSite.Models
                   YearTermId = 3           
                    });
                    
-                   context.Choices.Add(new Choice { StudentId = "A00100002",
+                   context.Choices.Add(new Choice { StudentId = "A00100003",
                   StudentFirstName = "SampleFirstName",
                   StudentLastname = "SampleLastName",
                   FirstChoiceOptionId = 4,
@@ -81,7 +81,7 @@ namespace DiplomaWebSite.Models
                   YearTermId = 3           
                    });
                    
-                   context.Choices.Add(new Choice { StudentId = "A00100002",
+                   context.Choices.Add(new Choice { StudentId = "A00100004",
                   StudentFirstName = "SampleFirstName",
                   StudentLastname = "SampleLastName",
                   FirstChoiceOptionId = 4,
@@ -92,7 +92,7 @@ namespace DiplomaWebSite.Models
                   YearTermId = 3           
                    });
                    
-                  context.Choices.Add(new Choice { StudentId = "A00100002",
+                  context.Choices.Add(new Choice { StudentId = "A00100005",
                   StudentFirstName = "SampleFirstName",
                   StudentLastname = "SampleLastName",
                   FirstChoiceOptionId = 4,
@@ -103,7 +103,7 @@ namespace DiplomaWebSite.Models
                   YearTermId = 3           
                    });
                    
-                  context.Choices.Add(new Choice { StudentId = "A00100002",
+                  context.Choices.Add(new Choice { StudentId = "A00100006",
                   StudentFirstName = "SampleFirstName",
                   StudentLastname = "SampleLastName",
                   FirstChoiceOptionId = 4,
@@ -114,7 +114,7 @@ namespace DiplomaWebSite.Models
                   YearTermId = 4           
                    });
                    
-                  context.Choices.Add(new Choice { StudentId = "A00100002",
+                  context.Choices.Add(new Choice { StudentId = "A00100007",
                   StudentFirstName = "SampleFirstName",
                   StudentLastname = "SampleLastName",
                   FirstChoiceOptionId = 4,
@@ -125,7 +125,7 @@ namespace DiplomaWebSite.Models
                   YearTermId = 4           
                    });
                    
-                  context.Choices.Add(new Choice { StudentId = "A00100002",
+                  context.Choices.Add(new Choice { StudentId = "A00100008",
                   StudentFirstName = "SampleFirstName",
                   StudentLastname = "SampleLastName",
                   FirstChoiceOptionId = 4,
